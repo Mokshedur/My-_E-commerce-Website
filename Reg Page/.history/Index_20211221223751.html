@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Regristration page</title>
+    <link rel="stylesheet" href="CSS/main.css">
+</head>
+
+<body>
+    <div class="con">
+        <div class="bann">
+            <img src="IMG/banner.jpg" alt=""><br/>
+            <h3>Welcome to world view</h3>
+            <p>It's a Demonstration page project made by Song Wei. Sign Up in our website and see the magical place details of the world. I hope Your are enjoing my website roadmap and gain some knowledge about the world amazing place.
+
+            </p>
+        </div>
+        <div class="form">
+            <form action="#">
+                <div class="title">Sign Up</div>
+                <div class="box">
+                    <input type="text" placeholder="Enter Sure name" id="fn" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="box"> <input type="text" placeholder="Enter Nick name" id="ln" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="box underline">
+                    <input type="text" placeholder="Enter Your Email" id="mail" required>
+                    <div class="underline"></div>
+                    <!--Email Field with velidation-->
+                </div>
+                <div class="box underline">
+                    <input type="text" placeholder="Enter Your Tel-Number" id="number" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="box">
+                    <input type="password" placeholder="Enter Your Password" id="pwd" required>
+                    <div class="underline"></div>
+                    <!--Password Field with velidation-->
+                </div>
+                <div class="box">
+                    <input type="password" placeholder="Confirm Password" id="pwd" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="box">
+                    <input type="password" placeholder="Enter Your Password" id="pwd" required>
+                    <div class="underline"></div>
+                </div>
+                <div class="box button">
+                    <button onclick="vercod()" id="vc">Code</button>
+                    <!--Code form-->
+                </div>
+                <div class="box">
+                    <input type="text" placeholder="OTP" id="otp" required>
+                    <div class="underline"></div>
+                    <!--Security Code with velidation-->
+                </div>
+                <div class="Agreement">
+                    <input type="checkbox" id="cb" value="Agree">
+                    <label for="Agree">I accept the terms and condition</label>
+                    <!--Agreement box-->
+                </div>
+                <div class="box button">
+                    <button onclick="sub()">I'm in</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+<script src="JS/main.js"></script>
+
+</html>

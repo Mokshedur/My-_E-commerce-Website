@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="Css/main.css">
+    <script src="Js/main.js"></script>
+</head>
+
+<body>
+    <div class="container">
+        <form action="#">
+            <div class="title">Login</div>
+            <div class="box underline">
+                <input type="text" placeholder="Enter Your Email" id="mail" required>
+                <div class="underline"></div>
+                <!--Email Field with velidation-->
+            </div>
+            <div class="box">
+                <input type="password" placeholder="Enter Your Password" id="pwd" required>
+                <div class="underline"></div>
+                <!--Password Field with velidation-->
+            </div>
+            <div class="box button">
+                <button onclick="vercod()" id="vc">Code</button>
+                <!--Code form-->
+            </div>
+            <div class="box">
+                <input type="text" placeholder="OTP" id="otp" required>
+                <div class="underline"></div>
+                <!--Security Code with velidation-->
+            </div>
+            <div class="Agreement">
+                <input type="checkbox" id="cb" value="Agree">
+                <label for="Agree">I accept the terms and condition</label>
+                <!--Agreement box-->
+            </div>
+            <div class="box button">
+                <button onclick="sub()">Code</button>
+            </div>
+        </form>
+    </div>
+    <footer>
+        ©Copyright all the reserve from CST 2019 at YTBU<br/>Islam Ramadul® Devoloper
+    </footer>
+</body>
+
+</html>

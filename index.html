@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="author" content="https://github.com/syahrizaldev">
+    <title>Mega Menu with Vanilla JavaScript</title>
+    <link rel="stylesheet" type="text/css" href="./public/css/reset.min.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/style.min.css">
+    <link rel="stylesheet" type="text/css" href="./public/css/ionicon.min.css">
+    <style>
+        body {
+            background-color: tomato;
+            text-align: center;
+            align-content: center;
+            align-items: center;
+        }
+        
+        body>nav>ul>li {
+            list-style-type: none;
+            display: inline-block;
+            margin: 10px;
+            color: rgb(83, 81, 81);
+            background-color: rgb(255, 175, 71);
+            border: 1px solid transparent;
+            box-shadow: 0px 0px 25px 10px rgba(255, 175, 71, 0.75);
+            padding: 5px 7px;
+            cursor: pointer;
+        }
+        
+        .home {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+        }
+        
+        .card-container {
+            display: flex;
+        }
+        
+        .card {
+            display: block;
+            border: 1px solid white;
+            padding: 30px;
+        }
+        
+        .hidden {
+            display: none;
+            /* transition: opacity 1s ease 0s;
+    opacity: 0; */
+        }
+        
+        .show {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            align-content: center;
+            /* animation: fade_in_show 1.5s; */
+            /* position: relative;
+    left: 90%; */
+            /* opacity: 1;
+    transition: opacity 1s linear 0s; */
+        }
+        
+        .show-home {
+            display: grid;
+        }
+        
+        @keyframes fade_in_show {
+            0% {
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+        
+        .img-all {
+            height: 400px;
+            width: 400px;
+        }
+        
+        .main-part1 {
+            margin-top: 100px;
+            margin-left: 20px;
+        }
+        
+        .div-style {
+            border: 3px solid red;
+            padding: 5px;
+            margin: 5px;
+        }
+        
+        .div-style :hover {
+            box-shadow: green;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header Section -->
+    <header class="header">
+        <div class="container">
+            <section class="wrapper">
+                <div class="header-item-left">
+                    <a href="./index.html"><img src="./assets/logoipsum.svg" class="brand"></a>
+                </div>
+                <!-- Navbar Section -->
+                <div class="header-item-center">
+                    <div class="overlay"></div>
+                    <nav class="menu" id="menu">
+                        <div class="menu-mobile-header">
+                            <button type="button" class="menu-mobile-arrow"><i class="ion ion-ios-arrow-back"></i></button>
+                            <div class="menu-mobile-title"></div>
+                            <button type="button" class="menu-mobile-close"><i class="ion ion-ios-close"></i></button>
+                        </div>
+                        <ul class="menu-section">
+                            <li class="menu-item"><a href="#" id="ami" onmouseenter={showHome()}>Home</a></li>
+                            <li class="menu-item-has-children">
+                                <a href="#" id="prod" onmouseenter={toggleCard(1)}>Products </a>
+                                <div class="menu-subs menu-mega menu-column-4">
+                                    <div class="list-item text-center">
+                                        <!-- <a href="#">
+                                            <img src="./assets/product-01.jpg" loading="lazy" alt="Product Images">
+                                            <h4 class="title">Product One</h4>
+                                        </a> -->
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <!-- <a href="#">
+                                            <img src="./assets/product-02.jpg" loading="lazy" alt="Product Images">
+                                            <h4 class="title">Product Two</h4>
+                                        </a> -->
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <!-- <a href="#">
+                                            <img src="./assets/product-03.jpg" loading="lazy" alt="Product Images">
+                                            <h4 class="title">Product Three</h4>
+                                        </a> -->
+                                    </div>
+                                    <div class="list-item text-center">
+                                        <!-- <a href="#">
+                                            <img src="./assets/product-04.jpg" loading="lazy" alt="Product Images">
+                                            <h4 class="title">Product Four</h4>
+                                        </a> -->
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="./Fast-Menu-master/index.html">Fast-Food<i class="ion ion-ios-arrow-down"></i></a>
+                                <!-- <div class="menu-subs menu-mega menu-column-4">
+                                    <div class="list-item">
+                                        <h4 class="title">Men's Fashion</h4>
+                                        <ul>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                        </ul>
+                                        <h4 class="title">Kid's Fashion</h4>
+                                        <ul>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="list-item">
+                                        <h4 class="title">Women's Fashion</h4>
+                                        <ul>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                        </ul>
+                                        <h4 class="title">Health & Beauty</h4>
+                                        <ul>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="list-item">
+                                        <h4 class="title">Home & Lifestyle</h4>
+                                        <ul>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                            <li><a href="#">Product List</a></li>
+                                        </ul>
+                                    </div>
+                                    <div class="list-item">
+                                        <img src="./assets/product-05.jpg" loading="lazy" alt="Product Images">
+                                    </div>
+                                </div> -->
+                            </li>
+                            <li class="menu-item-has-children">
+                                <a href="#">Accounts <i class="ion ion-ios-arrow-down"></i></a>
+                                <div class="menu-subs menu-column-1">
+                                    <ul>
+                                        <li><a href="./Log Page/Log.html">Register</a></li>
+                                        <li><a href="#">Shopping-gallery</a></li>
+                                        <li><a href="#">Privacy Policy</a></li>
+                                        <li><a href="#">Term of Cookies</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                            <li class="menu-item"><a href="./coffe/index.html">Instant-Service</a></li>
+                            <li class="menu-item"><a href="sample-contact-us-page-master/contact.html">Contact Us</a></li>
+                        </ul>
+                    </nav>
+                </div>
+
+                <div class="header-item-right">
+                    <a href="#" class="menu-icon"><i class="ion ion-md-search"></i></a>
+                    <a href="./8/fireworks.html" class="menu-icon"><i class="ion ion-md-heart"></i></a>
+                    <a href="./panda-commerce-bootstrap-main/index.html" class="menu-icon"><i class="ion ion-md-cart"></i></a>
+                    <button type="button" class="menu-mobile-toggle">
+						<span></span>
+						<span></span>
+						<span></span>
+						<span></span>
+					</button>
+                </div>
+            </section>
+        </div>
+
+
+    </header>
+
+
+    <main class=" main-part1">
+        <section class="home">
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/1.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;" class="div-style">
+                <img src="./img/2.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/3.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/4.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/5.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/6.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/7.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/8.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+            <div style="height: 500px; width: 500px;;" class="div-style">
+                <img src="./img/9.jpg" alt="" class="img-all">
+                <h2>This is very good product</h2>
+                <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+            </div>
+        </section>
+        <section class="card-container">
+            <div id="1" class="hidden box">
+                <div style="height: 500px; width: 500px;;" class="div-style" class="card">
+                    <img src="./img/1.jpg" alt="" class="img-all">
+                    <h2>This is very good product</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+                </div>
+                <div style="height: 500px; width: 500px;" class="div-style" class="card">
+                    <img src="./img/2.jpg" alt="" class="img-all">
+                    <h2>This is very good product</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+                </div>
+                <div style="height: 500px; width: 500px;;" class="div-style" class="card">
+                    <img src="./img/3.jpg" alt="" class="img-all">
+                    <h2>This is very good product</h2>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Nam, obcaecati!</p>
+                </div>
+
+
+
+
+
+            </div>
+            </div>
+
+
+            <!-- <div id="3" class="hidden">
+                <div class="card ">
+                    <img src="./images/flag-7.png" alt="">
+                    <h3>Country name</h3>
+                    <h4>Continent</h4>
+                    <h5>Population</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse, aliquam dolore quam nam nemo accusantium enim suscipit incidunt vel. Placeat maiores ut architecto repellendus exercitationem cum eligendi aperiam similique?</p>
+                </div>
+                <div class="card ">
+                    <img src="./images/flag-8.png" alt="">
+                    <h3>Country name</h3>
+                    <h4>Continent</h4>
+                    <h5>Population</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse, aliquam dolore quam nam nemo accusantium enim suscipit incidunt vel. Placeat maiores ut architecto repellendus exercitationem cum eligendi aperiam similique?</p>
+                </div>
+                <div class="card ">
+                    <img src="./images/flag-9.png" alt="">
+                    <h3>Country name</h3>
+                    <h4>Continent</h4>
+                    <h5>Population</h5>
+                    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Odit esse, aliquam dolore quam nam nemo accusantium enim suscipit incidunt vel. Placeat maiores ut architecto repellendus exercitationem cum eligendi aperiam similique?</p>
+                </div>
+            </div> -->
+
+        </section>
+    </main>
+
+
+    <script>
+        const toggleCard = id => {
+            const displayingCard = document.querySelector(".show");
+            const home = document.querySelector(".home");
+            const currentCard = document.getElementById(id);
+
+            if (home.classList.contains("show-home")) {
+                home.classList.remove("show-home")
+            }
+
+            if (displayingCard) {
+                displayingCard.classList.remove("show");
+            }
+
+            currentCard.classList.add("show");
+            home.classList.add("hidden");
+        }
+
+        const showHome = () => {
+            const displayingCard = document.querySelector(".show");
+            const home = document.querySelector(".home");
+            if (displayingCard) {
+                displayingCard.classList.remove("show");
+            }
+
+            home.classList.add("show-home");
+        }
+    </script>
+    <script defer src="./public/js/script.js"></script>
+</body>
+
+</html>

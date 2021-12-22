@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #main-body {
+            text-align: center;
+            margin-top: 100px;
+            border: 2px;
+        }
+        
+        button {
+            background-color: rgb(30, 255, 0);
+            height: 70px;
+            width: 85px;
+            border-radius: 2px;
+        }
+        
+        h1 {
+            background-color: rgb(30, 255, 0);
+            ;
+        }
+        
+        .kaku {
+            color: chartreuse;
+            background-color: crimson;
+            font-size: 5rem;
+        }
+    </style>
+</head>
+
+<body id="main-body">
+    <h1>思哲的照片</h1>
+    <button onclick="prep()">Previous</button>
+    <img src="img/1.jpg" alt="" height="500px" width="600px">
+    <button onclick="next()">Next</button>
+
+    <script>
+        var photos = ["img/1.jpg", "img/2.jpg", "img/3.jpg", "img/4.jpg", "img/6.jpg", "img/7.jpg", "img/8.jpg", "img/9.jpg", "img/10.jpg", "img/11.jpg", "img/12.jpg"]
+        var imgTag = document.querySelector("img");
+
+        var count = 0;
+
+        function next() {
+            count++;
+            if (count >= photos.length) {
+                count = 0;
+                imgTag.src = photos[count];
+
+            } else {
+                imgTag.src = photos[count];
+            }
+        };
+
+        function prep() {
+            count--;
+            if (count < 0) {
+                count = photos.length - 1;
+                imgTag.src = photos[count];
+
+            } else {
+                imgTag.src = photos[count];
+            }
+        };
+        var Album = document.querySelector("h1");
+        Album.addEventListener("mouseover", function() {
+            Album.classList.add("kaku");
+
+        });
+        Album.addEventListener("mouseout", function() {
+            Album.classList.remove("kaku");
+
+        });
+    </script>
+</body>
+
+</html>
